@@ -6,8 +6,13 @@ import java.util.Scanner;
 public class HomeworkArrays {
     public static void main(String[] args) {
         taskArray2();
+        taskArray1();
     }
-
+    public static void taskArray1() {
+        String [] names = {"Alex", "Egor", "Maksim", "Ilya"};
+        Arrays.sort (names);
+        System.out.println(Arrays.toString(names));
+    }
     public static void taskArray2() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите размер массива от 5 до 10: ");
@@ -16,7 +21,6 @@ public class HomeworkArrays {
             System.out.println("Введите число в указанном диапазоне");
             num = scanner.nextInt();
         }
-
         int[] random = new int[num];
         int evenNums = 0;
         for (int i = 0; i < random.length; i++) {
@@ -26,7 +30,6 @@ public class HomeworkArrays {
             }
         }
         System.out.println(Arrays.toString(random));
-
         int[] even = new int[evenNums];
         int index = 0;
         for (int i = 0; i < num; i++) {
