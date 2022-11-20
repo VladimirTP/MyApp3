@@ -7,6 +7,7 @@ public class MultiArrays {
     public static void main(String[] args) {
         taskMulti1();
         taskMulti2();
+        taskMulti3();
     }
     public static void taskMulti1() {
         Scanner in = new Scanner(System.in);
@@ -67,5 +68,36 @@ public class MultiArrays {
             }
         }
         System.out.println(Arrays.deepToString(strings));
+    }
+    public static void taskMulti3() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите размерность 1-го массива, число >=0: ");
+        int first = in.nextInt();
+        System.out.println("Введите размерность 2-го массива, число >=0: ");
+        int second = in.nextInt();
+        int[][] search = new int[first][second];
+        for (int i = 0; i < search.length; i++) {
+            for (int j = 0; j < search[i].length; j++) {
+                search[i][j] = (int) (Math.random() * 10);
+            }
+        }
+        System.out.println(Arrays.deepToString(search));
+        System.out.println("Введите число для поиска другого числа массива, которое делится нацело на введенное вами: ");
+        int putNumber = in.nextInt();
+        int counter =0;
+        for (int[] number : search) {
+            for (int element : number) {
+                if (element % putNumber == 0) {
+                    System.out.println("Найден искомый элемент: " + element);
+                    return;
+                } else {
+                    counter++;
+                }
+            }
+        }
+        if (counter == first * second) {
+            System.out.println("| Искомый элемен не найден.");
+        }
+        System.out.println("В массиве нет такого числа");
     }
 }
