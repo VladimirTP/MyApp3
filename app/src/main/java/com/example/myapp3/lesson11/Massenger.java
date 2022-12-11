@@ -1,7 +1,6 @@
 package com.example.myapp3.lesson11;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,12 +13,19 @@ public class Massenger {
     }
 
     public static int inputOption() {
-        String option = in.nextLine();
-        int index = 0;
-        try {
-            index = Integer.parseInt(option);
-        } catch (NumberFormatException e) {
-            System.out.println("Повторите ввод");
+        int index;
+        while (true) {
+            String option = in.nextLine();
+            try {
+                index = Integer.parseInt(option);
+                if (index<1 || index >4) {
+                    throw new Exception();
+                } else break;
+            } catch (NumberFormatException e) {
+                System.out.println("Повторите ввод");
+            } catch (Exception e) {
+                System.out.println("Введите 1,2,3,4");
+            }
         } return index;
     }
 
@@ -66,7 +72,6 @@ public class Massenger {
     }
 
     public static void workWithUser() {
-        boolean isFinished = false;
         do {
             System.out.println("Выберете вариант: ");
             System.out.println("1 - Зарегистрировать нового пользователя");
@@ -89,12 +94,9 @@ public class Massenger {
                     else System.out.println("Зарегистрируйте нового пользователя");
                     break;
                 }
-                case 4: {
-                    isFinished = true;
-                    break;
-                }
-                default: return;
+                case 4: return;
+                default: workWithUser();
             }
-        } while (!isFinished);
+        } while (true);
     }
 }
